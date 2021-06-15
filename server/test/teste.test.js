@@ -11,14 +11,15 @@ const generate = function (){
 
 test('Should get posts', async function () {
     //  given
-    const post1 = postsService.savePost({title: generate(), content: generate()});
-    const post2 = postsService.savePost({title: generate(), content: generate()});
-    const post3 = postsService.savePost({title: generate(), content: generate()});
+    const post1 = await postsService.savePost({nome: generate(), descricao: generate()});
+    const post2 = await postsService.savePost({nome: generate(), descricao: generate()});
+    const post3 = await postsService.savePost({nome: generate(), descricao: generate()});
     //  when
     const response = await axios({
         url: 'http://localhost:3000/posts',
         method: 'get'
     });
-    const posts = response.data();
+    const posts = response.data;
     //  then
+    expect(posts).toHaveLenght(3);
 })

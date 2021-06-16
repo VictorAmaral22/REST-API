@@ -1,2 +1,1 @@
-...
-comi o cool
+
